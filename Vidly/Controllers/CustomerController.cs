@@ -11,6 +11,7 @@ namespace Vidly.Controllers
 {
     public class CustomerController : Controller
     {
+        //Testing GitHub
         // GET: Customer
         private VidlyDataContext _context;
 
