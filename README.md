@@ -6,5 +6,5 @@
 Old fashined I know  - a video store - but it's the business used in this case study.
 
 Features:
-* For your conveneince includes a T-SQL script to create database and load with some initiail data. For those that would rather not do this trough EF Migrations.
+* For your conveneince includes a T-SQL script to the create database and load with some initiail data. For those that would rather not do this trough EF Migrations.
 
