@@ -25,6 +25,32 @@ namespace Vidly.Controllers
 
         }
 
+        public ViewResult New()
+        {
+            
+            var genres = _context.Genres.ToList();
+            
+            var viewModel = new MovieFormViewModel
+            {
+                Genres = genres
+            };
+
+            //var movies = _context.Movies.Include(m => m.Genre);
+
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult Save(Movie movie)
+        {
+            movie.DateAdded = DateTime.Now;
+            _context.Movies.Add(movie);
+
+            _context.SaveChanges();
+
+            var movieList = _context.Movies;
+
+            return View("List", movieList);
+        }
         public ActionResult List()
         {
             var movies = _context.Movies.Include(m => m.Genre);
@@ -33,7 +59,7 @@ namespace Vidly.Controllers
         public ActionResult Details(int id)
         {
             ViewBag.Title = "Movie Detail";
-            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.ID == id) ;
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id) ;
             if (movie == null) return HttpNotFound();
             return View(movie); 
         }
