@@ -7,4 +7,4 @@ Old fashined I know  - a video store - but it's the business used in this case s
 
 Features:
 * For your conveneince includes a T-SQL script to the create database and load with some initiail data. Very handy for those that would rather not do this trough EF Migrations.
-
+* Customer add and Customer edit handled by a single CustomerFormView instead of separate add and edit views
