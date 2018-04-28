@@ -32,6 +32,7 @@ namespace Vidly.Controllers
                 MembershipTypes = membershiptypes
             };
 
+
             return View("CustomerForm", viewModel);
         }
 
@@ -85,7 +86,7 @@ namespace Vidly.Controllers
                 Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
-                 
+
             return View("CustomerForm", viewModel);
         }
         public ActionResult Display(int id)

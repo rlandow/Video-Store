@@ -1,0 +1,136 @@
+diff --git a/.vs/Vidly/v15/.suo b/.vs/Vidly/v15/.suo
+index cb7f425..bd6cba8 100644
+Binary files a/.vs/Vidly/v15/.suo and b/.vs/Vidly/v15/.suo differ
+diff --git a/.vs/Vidly/v15/Server/sqlite3/storage.ide b/.vs/Vidly/v15/Server/sqlite3/storage.ide
+index 9ab5fde..7086114 100644
+Binary files a/.vs/Vidly/v15/Server/sqlite3/storage.ide and b/.vs/Vidly/v15/Server/sqlite3/storage.ide differ
+diff --git a/Vidly/Content/Site.css b/Vidly/Content/Site.css
+index 6ea5d8f..a08042f 100644
+--- a/Vidly/Content/Site.css
++++ b/Vidly/Content/Site.css
+@@ -22,3 +22,7 @@ select,
+ textarea {
+     max-width: 280px;
+ }
++
++.error-message{
++    color:red
++}
+diff --git a/Vidly/Controllers/CustomerController.cs b/Vidly/Controllers/CustomerController.cs
+index 9dddaaa..e5bf0d3 100644
+--- a/Vidly/Controllers/CustomerController.cs
++++ b/Vidly/Controllers/CustomerController.cs
+@@ -32,6 +32,7 @@ namespace Vidly.Controllers
+                 MembershipTypes = membershiptypes
+             };
+ 
++
+             return View("CustomerForm", viewModel);
+         }
+ 
+@@ -85,7 +86,7 @@ namespace Vidly.Controllers
+                 Customer = customer,
+                 MembershipTypes = _context.MembershipTypes.ToList()
+             };
+-                 
++
+             return View("CustomerForm", viewModel);
+         }
+         public ActionResult Display(int id)
+diff --git a/Vidly/ViewModels/CustomerFormViewModel.cs b/Vidly/ViewModels/CustomerFormViewModel.cs
+index 8ff5565..2a32b39 100644
+--- a/Vidly/ViewModels/CustomerFormViewModel.cs
++++ b/Vidly/ViewModels/CustomerFormViewModel.cs
+@@ -11,5 +11,13 @@ namespace Vidly.ViewModels
+         public IEnumerable<MembershipType> MembershipTypes { get; set; }
+         public Customer Customer { get; set; }
+ 
++        public string Title
++        {
++            get
++            {
++                return Customer == null ? "New Customer" : "Edit Customer";
++            }
++        }
++
+     }
+ }
+\ No newline at end of file
+diff --git a/Vidly/ViewModels/MovieFormViewModel.cs b/Vidly/ViewModels/MovieFormViewModel.cs
+index e84c2f1..4991762 100644
+--- a/Vidly/ViewModels/MovieFormViewModel.cs
++++ b/Vidly/ViewModels/MovieFormViewModel.cs
+@@ -11,6 +11,7 @@ namespace Vidly.ViewModels
+ 
+         public int? Id { get; set; }
+ 
++        [Required(ErrorMessage = "Movie Name rquired")]
+         public string Name { get; set; }
+ 
+         [Display(Name="Genre")]
+diff --git a/Vidly/Views/Customer/CustomerForm.cshtml b/Vidly/Views/Customer/CustomerForm.cshtml
+index f4a874c..01765b5 100644
+--- a/Vidly/Views/Customer/CustomerForm.cshtml
++++ b/Vidly/Views/Customer/CustomerForm.cshtml
+@@ -1,11 +1,11 @@
+ ﻿@model Vidly.ViewModels.CustomerFormViewModel
+ 
+ @{
+-    ViewBag.Title = "New";
++    //ViewBag.Title = "New";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+ 
+-<h2>New Customer</h2>
++<h2>@Model.Title</h2>
+ 
+ @using (Html.BeginForm("Save", "Customer"))
+ {
+diff --git a/Vidly/Views/Movies/MovieForm.cshtml b/Vidly/Views/Movies/MovieForm.cshtml
+index 8ce9b73..a579545 100644
+--- a/Vidly/Views/Movies/MovieForm.cshtml
++++ b/Vidly/Views/Movies/MovieForm.cshtml
+@@ -9,18 +9,20 @@
+ 
+ @using (Html.BeginForm("Save", "Movies"))
+ {
++    @Html.ValidationSummary("Please correct errors")
+     <div class="form-group">
+         @Html.LabelFor(m => m.Name)
+-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" } )
++        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
++        @Html.ValidationMessageFor(m => m.Name, null, new { @class = "error-message" } )
+     </div>
+ 
+     <div class="form-group">
+         @Html.LabelFor(m => m.ReleaseDate)
+-        @Html.TextBoxFor(m => m.ReleaseDate, "0:d mm yyyy", new { @class = "form-control"})
++        @Html.TextBoxFor(m => m.ReleaseDate, "0:d mm yyyy", new { @class = "form-control" })
+     </div>
+     <div class="form-group">
+         @Html.LabelFor(m => m.GenreId)
+-        @Html.DropDownListFor(m => m.GenreId, new SelectList(Model.Genres, "Id", "Name"), "", new { @class="form-control"})
++        @Html.DropDownListFor(m => m.GenreId, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+     </div>
+     <div class="form-group">
+         @Html.LabelFor(m => m.NumberInStock)
+@@ -30,3 +32,6 @@
+     <button type="submit" class="btn btn-primary">Save</button>
+ }
+ 
++@section Scripts {
++    @Scripts.Render("~/bundles/jqueryval")
++}
+\ No newline at end of file
+diff --git a/Vidly/bin/Vidly.dll b/Vidly/bin/Vidly.dll
+index c4bbe70..36e1fbf 100644
+Binary files a/Vidly/bin/Vidly.dll and b/Vidly/bin/Vidly.dll differ
+diff --git a/Vidly/bin/Vidly.pdb b/Vidly/bin/Vidly.pdb
+index f862cca..949d6d5 100644
+Binary files a/Vidly/bin/Vidly.pdb and b/Vidly/bin/Vidly.pdb differ
+diff --git a/Vidly/obj/Debug/Vidly.dll b/Vidly/obj/Debug/Vidly.dll
+index c4bbe70..36e1fbf 100644
+Binary files a/Vidly/obj/Debug/Vidly.dll and b/Vidly/obj/Debug/Vidly.dll differ
+diff --git a/Vidly/obj/Debug/Vidly.pdb b/Vidly/obj/Debug/Vidly.pdb
+index f862cca..949d6d5 100644
+Binary files a/Vidly/obj/Debug/Vidly.pdb and b/Vidly/obj/Debug/Vidly.pdb differ
