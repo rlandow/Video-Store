@@ -10,25 +10,29 @@
 }
 else
 {
-
+<ul style="padding-left:0">
+    <li style="display:inline; margin-right:20px">@Html.ActionLink("Home", "Index", "Home")</li>
+    <li style="display:inline; margin-right:20px">@Html.ActionLink("Movies", "List", "Movies")</li>
+</ul>
     <text>
-<h2>Customers</h2>
+        <h2>Customers</h2>
+        @Html.ActionLink("New Customer", "New", "Customer", null, new { @class="btn btn-primary"})
         <table class="table">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>Memberhip Type</th>
-            <th>Discount Rate</th>
+                </th>
+                <th>Memberhip Type</th>
+                <th>Discount Rate</th>
 
-        </tr>
+            </tr>
     </text>
 
     foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "Edit", "Customer", new { id = item.Id  }, null )
+                @Html.ActionLink(item.Name, "Edit", "Customer", new { id = item.Id }, null)
             </td>
             <td>
                 @item.MembershipType.Name

@@ -96,7 +96,6 @@ C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\bin\Microsoft.AI.DependencyC
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\bin\Microsoft.AI.Web.xml
-C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.csprojResolveAssemblyReference.cache
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.Migrations.InitialModel.resources
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.Migrations.AddIsSubscribedToCustomer.resources
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.Migrations.AddMembershipType.resources
@@ -110,3 +109,5 @@ C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.csproj.Gener
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.csproj.CoreCompileInputs.cache
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.dll
 C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.pdb
+C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.csprojAssemblyReference.cache
+C:\Users\nxh4vpn\Documents\GitHub\Video-Store\Vidly\obj\Debug\Vidly.csproj.CopyComplete

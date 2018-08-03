@@ -60,8 +60,22 @@ namespace Vidly.Controllers
         {
             ViewBag.Title = "Movie Detail";
             var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id) ;
+            
+            var genres = _context.Genres.ToList();
+            var viewModel = new MovieFormViewModel
+            {
+                Id = movie.Id,
+                Name = movie.Name,
+                ReleaseDate = movie.ReleaseDate,
+                NumberInStock = movie.NumberInStock,
+                GenreId = movie.GenreId,
+                Genres = genres
+            };
+
+            
+
             if (movie == null) return HttpNotFound();
-            return View(movie); 
+            return View("MovieForm", viewModel); 
         }
         public ActionResult Random()
         {

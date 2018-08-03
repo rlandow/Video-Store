@@ -28,7 +28,7 @@ namespace Vidly.ViewModels
         {
             get
             {
-                return Id != 0 ? "Edit Movie" : "New Movie";
+                return  Id != 0 ? "Edit Movie" : "New Movie";
             }
         }
 
@@ -45,5 +45,7 @@ namespace Vidly.ViewModels
             NumberInStock = movie.NumberInStock;
             GenreId = movie.GenreId;
         }
+
+
     }
 }
